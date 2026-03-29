@@ -24,7 +24,7 @@ func (s *Server) handleCreateGroup(conn net.Conn, parts []string) {
 	}
 
 	s.group[nameGR] = []net.Conn{conn}
-	_, _ = conn.Write([]byte(fmt.Sprintf("Created a new group <%s>\n", nameGR)))
+	_, _ = fmt.Fprintf(conn, "Created a new group <%s>\n", nameGR)
 }
 
 func (s *Server) handleListGroups(conn net.Conn, parts []string) {
